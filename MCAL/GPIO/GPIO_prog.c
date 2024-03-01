@@ -71,8 +71,8 @@ uint8 GPIO_u8PinInit(const PinConfig_t * PinConfig)
 				uint8 LOC_u8RegNum = (PinConfig->pinNum ) / 8u ;  /*Select Register L or H*/
 				uint8 LOC_u8BitNum = ((PinConfig->pinNum ) % 8u) * FOUR_PIN_ACCESS  /*Select Bit*/
 				
-				(GPIO_PORT[PinConfig->portName]->AFRL[LOC_u8RegNum]) &= ~(FOUR_BIT_MASK << LOC_u8BitNum);
-				(GPIO_PORT[PinConfig->portName]->AFRL[LOC_u8RegNum]) |= ((PinConfig->altFunc) << LOC_u8BitNum;
+				(GPIO_PORT[PinConfig->portName]->AFR[LOC_u8RegNum]) &= ~(FOUR_BIT_MASK << LOC_u8BitNum);
+				(GPIO_PORT[PinConfig->portName]->AFR[LOC_u8RegNum]) |= ((PinConfig->altFunc) << LOC_u8BitNum;
 			}
 		}
 	}

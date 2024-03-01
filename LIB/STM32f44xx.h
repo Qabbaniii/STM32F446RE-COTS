@@ -68,7 +68,18 @@
 
 /********************   GPIO Register Definition Structure    ********************/
 
-
+typedef struct
+{
+  volatile uint32_t MODER;   /*GPIO PORT MODE REGISTER */
+  volatile uint32_t OTYPER;  /*GPIO PORT OUTPUT TYPE REGISTER*/
+  volatile uint32_t OSPEEDR; /*GPIO PORT OUTPUT SPEED REGISTER*/
+  volatile uint32_t PUPDR;   /*GPIO PORT PULL UP / DOWN REGISTER */
+  volatile uint32_t IDR;     /*GPIO PORT INPUT DAATA REGISTER */
+  volatile uint32_t ODR;     /*GPIO PORT OUTPUT DATA REGISTER */
+  volatile uint32_t BSRR;    /*GPIO PORT BIT SET / RESET REGISTER  */
+  volatile uint32_t LCKR;    /*GPIO PORT LOCK REGISTER  */
+  volatile uint32_t AFR[2]; /*GPIO PORT ALTERNATE FUNCTION REGISTER  */
+} GPIO_RegDef_t;
 
 /********************   RCC Register Definition Structure    ********************/
 
@@ -134,4 +145,4 @@ typedef struct
 /*********************************************************************************
  *	END OF FILE: STM32F44xx.h
  *********************************************************************************/
- #endif STM32F44xx_H_
+ #endif
