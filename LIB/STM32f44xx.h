@@ -41,6 +41,7 @@
  #define GPIOF_BASE_ADDRESS		0x40021400UL
  #define GPIOG_BASE_ADDRESS		0x40021800UL
  #define GPIOH_BASE_ADDRESS		0x40021C00UL
+
  /***************************   RCC Base Address     ***************************/
  #define RCC_BASE_ADDRESS		0x40023800UL
  
@@ -67,18 +68,7 @@
 
 /********************   GPIO Register Definition Structure    ********************/
 
-typedef struct
-{
-  volatile uint32 MODER;  					 /*GPIO PORT MODE REGISTER */
-  volatile uint32 OTYPER; 					 /*GPIO PORT OUTPUT TYPE REGISTER*/
-  volatile uint32 OSPEEDR;					 /*GPIO PORT OUTPUT SPEED REGISTER*/
-  volatile uint32 PUPDR;  					 /*GPIO PORT PULL UP / DOWN REGISTER */
-  volatile uint32 IDR;    					 /*GPIO PORT INPUT DAATA REGISTER */
-  volatile uint32 ODR;    					 /*GPIO PORT OUTPUT DATA REGISTER */
-  volatile uint32 BSRR;   					 /*GPIO PORT BIT SET / RESET REGISTER  */
-  volatile uint32 LCKR;   					 /*GPIO PORT LOCK REGISTER  */
-  volatile uint32 AFRL[2];					 /*GPIO PORT ALTERNATE FUNCTION REGISTER  */
-} GPIO_RegDef_t;
+
 
 /********************   RCC Register Definition Structure    ********************/
 
@@ -139,7 +129,7 @@ typedef struct
 /********************   RCC peripheral Definitions     ********************/
 #define RCC  ((RCC_RegDef_t*)RCC_BASE_ADDRESS)
 
-
+ 
 
 /*********************************************************************************
  *	END OF FILE: STM32F44xx.h
