@@ -28,15 +28,6 @@
  *	CONSTANT MACROS & ENUMS
  ***********************************************************************************/
 
-#define TWO_PIN_ACCESS                  2u
-#define FOUR_PIN_ACCESS                 4u
-
-#define FOUR_BIT_MASK                   0b1111
-#define TWO_BIT_MASK                    0b11
-#define ONE_BIT_MASK                    0b1
-
-#define OK 								1
-#define NOK 							0
 
 typedef enum
 {

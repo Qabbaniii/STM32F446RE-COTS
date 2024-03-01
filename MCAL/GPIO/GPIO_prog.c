@@ -68,16 +68,11 @@ uint8 GPIO_u8PinInit(const PinConfig_t * PinConfig)
 			(GPIO_PORT[PinConfig->portName]->OSPEEDR) |= ((PinConfig->pullType) << (PinConfig->pinNum) * TWO_PIN_ACCESS);
 			if ((PinConfig->mode) == ALTERNATE_FUNCTION)
 			{
-				if ((PinConfig->pinNum) <= PIN7)
-				{
-					(GPIO_PORT[PinConfig->portName]->AFRL[0]) &= ~(FOUR_BIT_MASK << (PinConfig->pinNum) * FOUR_PIN_ACCESS);
-					(GPIO_PORT[PinConfig->portName]->AFRL[0]) |= ((PinConfig->altFunc) << (PinConfig->pinNum) * FOUR_PIN_ACCESS);
-				}
-				else if ((PinConfig->pinNum) > PIN7)
-				{
-					(GPIO_PORT[PinConfig->portName]->AFRL[1]) &= ~(FOUR_BIT_MASK << (PinConfig->pinNum) * FOUR_PIN_ACCESS);
-					(GPIO_PORT[PinConfig->portName]->AFRL[1]) |= ((PinConfig->altFunc) << (PinConfig->pinNum) * FOUR_PIN_ACCESS);
-				}
+				uint8 LOC_u8RegNum = (PinConfig->pinNum ) / 8u ;  /*Select Register L or H*/
+				uint8 LOC_u8BitNum = ((PinConfig->pinNum ) % 8u) * FOUR_PIN_ACCESS  /*Select Bit*/
+				
+				(GPIO_PORT[PinConfig->portName]->AFRL[LOC_u8RegNum]) &= ~(FOUR_BIT_MASK << LOC_u8BitNum);
+				(GPIO_PORT[PinConfig->portName]->AFRL[LOC_u8RegNum]) |= ((PinConfig->altFunc) << LOC_u8BitNum;
 			}
 		}
 	}
@@ -105,8 +100,9 @@ if ((portName <= PORTH) && (pinNum <= PIN15))
 {
 	switch(PinVal)
 	{
-	case PIN_LOW : GPIO_PORT[portName]->ODR &= ~(ONE_BIT_MASK << pinNum);break;
-	case PIN_HIGH: GPIO_PORT[portName]->ODR |= (ONE_BIT_MASK << pinNum);break;
+		default: Local_u8ErrorStatus = NOK; break;
+		case PIN_LOW : GPIO_PORT[portName]->ODR &= ~(ONE_BIT_MASK << pinNum); break;
+		case PIN_HIGH: GPIO_PORT[portName]->ODR |= (ONE_BIT_MASK << pinNum); break;
 	}
 }
 else
